@@ -1,8 +1,12 @@
 import SelectCountry from "@/app/components/SelectCountry";
 import UpdateProfileForm from "@/app/components/UpdateProfileForm";
+import { auth } from "@/app/lib/auth";
+import { getGuest } from "@/app/lib/data-service";
 
-  const nationality = "portugal";
-export default function Page() {
+export default async function Page() {
+  const session=await auth()
+  //@ts-ignore
+  const guest=await getGuest(session.user.email)
   return (
     <div>
       <h2 className="font-semibold text-2xl text-accent-400 mb-4">
@@ -14,13 +18,13 @@ export default function Page() {
         faster and smoother. See you soon!
       </p>
 
-     <UpdateProfileForm>
+     <UpdateProfileForm guest={guest}>
      <SelectCountry
-        name="nationality"
-        id="nationality"
-        className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
-        defaultCountry={nationality}
-      />
+          name="nationality"
+          id="nationality"
+          className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+          defaultCountry={guest.nationality||''}
+        />
      </UpdateProfileForm>
     </div>
   );

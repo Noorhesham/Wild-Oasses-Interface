@@ -10,8 +10,8 @@ const Reservation = async ({ cabin }: { cabin: CabinsProps }) => {
   const session = await auth();
   return (
     <div className=" grid grid-cols-2 border-primary-800 min-h-[400px]">
-      <DateSelector settings={settings} cabin={cabin} bookedDated={bookedDates} />
-      {session?.user?<ReservationForm user={session.user} settings={settings} />:<LoginMessage/>}
+      <DateSelector settings={settings} cabin={cabin} bookedDates={bookedDates} />
+      {session?.user?<ReservationForm user={session.user} cabin={cabin} />:<LoginMessage/>}
     </div>
   );
 };

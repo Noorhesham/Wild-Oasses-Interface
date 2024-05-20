@@ -6,3 +6,10 @@ export interface CabinsProps{
   discount: number,
   image: string
 }
+export interface UserProps{
+  fullName:string
+  email:string
+  nationality:string
+  countryFlag:string
+  nationalID:string
+}

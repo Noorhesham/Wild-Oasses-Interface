@@ -13,7 +13,7 @@ export async function getCabin(id: string) {
 
   if (error) {
     console.error(error);
-    notFound()
+    notFound();
   }
 
   return data;
@@ -121,8 +121,11 @@ export async function getSettings() {
 
 export async function getCountries() {
   try {
-    const res = await fetch("https://restcountries.com/v2/all?fields=name,flag");
+    const res = await fetch(
+      "https://restcountries.com/v2/all?fields=name,flag"
+    );
     const countries = await res.json();
+    console.log(countries)
     return countries;
   } catch {
     throw new Error("Could not fetch countries");
@@ -132,7 +135,7 @@ export async function getCountries() {
 /////////////
 // CREATE
 
-export async function createGuest(newGuest:any) {
+export async function createGuest(newGuest: any) {
   const { data, error } = await supabase.from("guests").insert([newGuest]);
 
   if (error) {

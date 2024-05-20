@@ -1,15 +1,16 @@
 import ReservationCard from "@/app/components/ReservationCard";
+import { auth } from "@/app/lib/auth";
+import { getBookings } from "@/app/lib/data-service";
 
-export default function Page() {
-  // CHANGE
-  const bookings:any = [];
-
+export default async function Page() {
+  const session=await auth();
+  //@ts-ignore
+  const bookings=await getBookings(session?.user?.guestId)
   return (
     <div>
       <h2 className="font-semibold text-2xl text-accent-400 mb-7">
         Your reservations
       </h2>
-
       {bookings.length === 0 ? (
         <p className="text-lg">
           You have no reservations yet. Check out our{" "}

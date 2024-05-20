@@ -1,5 +1,3 @@
-// Let's imagine your colleague already built this component 😃
-
 import { getCountries } from "../lib/data-service";
 
 async function SelectCountry({
@@ -14,7 +12,7 @@ async function SelectCountry({
   className: string;
 }) {
   const countries = await getCountries();
-  const flag = countries.find((country: any) => country.name === defaultCountry)?.flag ?? "";
+  const flag = countries?.find((country: any) => country.name === defaultCountry)?.flag ?? "";
 
   return (
     <select
