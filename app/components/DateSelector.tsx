@@ -28,6 +28,7 @@ function DateSelector({ bookedDates, settings, cabin }: { bookedDates: any; sett
         max={maxBookingLength}
         //@ts-ignore
         onSelect={setRange}
+        //@ts-ignore
         selected={displayRange}
         fromMonth={new Date()}
         fromDate={new Date()}

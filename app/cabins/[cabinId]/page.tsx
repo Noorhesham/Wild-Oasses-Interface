@@ -4,7 +4,7 @@ import Spinner from "@/app/components/Spinner";
 import { getCabin } from "@/app/lib/data-service";
 import { Suspense } from "react";
 
-export async function generateMetaData({ params }: { params: any }) {
+export async function generateMetadata({ params }: { params: any }) {
   const { name } = await getCabin(params.cabinId);
   return { title: name };
 }
